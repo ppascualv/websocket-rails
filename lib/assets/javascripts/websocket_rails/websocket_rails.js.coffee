@@ -108,9 +108,9 @@ class @WebSocketRails
     for callback in @callbacks[event.name]
       callback event.data
 
-  subscribe: (channel_name, params, success_callback, failure_callback) =>
+  subscribe: (channel_name, success_callback, failure_callback, params) =>
     unless @channels[channel_name]?
-      channel = new WebSocketRails.Channel [channel_name, params], @, false, success_callback, failure_callback
+      channel = new WebSocketRails.Channel channel_name, params, @, false, success_callback, failure_callback
       @channels[channel_name] = channel
       channel
     else

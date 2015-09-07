@@ -13,7 +13,7 @@ module WebsocketRails
       @private     = false
     end
 
-    def subscribe(connection,params)
+    def subscribe(connection)
       info "#{connection} subscribed to channel #{@name}"
       trigger 'subscriber_join', connection.user if config.broadcast_subscriber_events?
       @subscribers << connection
